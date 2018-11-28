@@ -8,7 +8,7 @@ class Tamagotchi
     @food_level = 10
     @sleep_level = 10
     @activity_level = 10
-    @time = Time.now.asctime
+    @time = Time.new
   end
 
   def set_food_level(number)
@@ -27,20 +27,15 @@ class Tamagotchi
     #pet must na
   end
 
-  def self.time_passes
-    time_now = Time.now.asctime
-    puts @time
-    puts time_now
-
-    #how to set time?
-    # reduce food and excercise and activity by 1 point every hour
-  end
-
-  def check_time
-    time = Time.now.asctime
+  def time_passes_hour
+    time_now = Time.new
     pet_time = @time
-    puts time
+    difference = time_now.to_i - pet_time.to_i
+    hours_passed = difference / 1200
+    puts time_now
     puts pet_time
+    puts difference
+    puts hours_passed
   end
 
   def is_alive
@@ -51,5 +46,3 @@ class Tamagotchi
     end
   end
 end
-
-my_pet.time
