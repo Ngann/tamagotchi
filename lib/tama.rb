@@ -1,8 +1,6 @@
 class Tamagotchi
   attr_reader :name, :food_level, :sleep_level, :activity_level, :time
 
-  # attr_accessor :food_level
-
   def initialize(name)
     @name = name
     @food_level = 10
@@ -11,14 +9,14 @@ class Tamagotchi
     @time = Time.new
   end
 
-  def set_food_level(number)
-    #everytime you add food this will increase the food level to 1
-    #if an hour
-    @food_level = @food_level - number
+  def set_food_level(time_passes)
+    #food reduces 1 point every minute
+    #foor increase 1 point everytime you push button
+    @food_level = @food_level - (1 * time_passes)
   end
 
   def activity
-    @activity_level = @activity_level - 1(hour)
+    @activity_level = @activity_level - (1 * time_difference)
     #need to get the difference of time created when pet was created.
   end
 
@@ -27,15 +25,17 @@ class Tamagotchi
     #pet must na
   end
 
-  def time_passes_hour
+  def time_passes(minutes)
+    minutes.to_i
+  end
+
+  def time_difference
     time_now = Time.new
     pet_time = @time
-    difference = time_now.to_i - pet_time.to_i
-    hours_passed = difference / 1200
-    puts time_now
-    puts pet_time
-    puts difference
-    puts hours_passed
+    seconds = time_now.to_i - pet_time.to_i
+    minutes = seconds / 60
+    hours = seconds / 1200
+    return minutes
   end
 
   def is_alive
